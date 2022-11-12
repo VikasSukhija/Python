@@ -4,15 +4,15 @@ from DPAPI  import CryptUnprotectData
 # Loads .ssh/known_hosts 
 configfile = "D:\\scripts\\Config.ini"
 sender_address = "DoNotReplyPy@labtest.com"
-sftp_server = "sftp.vender.com"
+sftp_server = "sftp.Vendor.com"
 private_key = "D:\\scripts\\Privatekey_1"
 try:
     config = configparser.ConfigParser()
     config.read(configfile)
     err_rcpt_to = config['master']['ErrorEmail']
     smtp_server = config['master']['SMTPServer']
-    v_user = config['Vender']['UserID']
-    vPassword1 = config['Vender']['Password']
+    v_user = config['Vendor']['UserID']
+    vPassword1 = config['Vendor']['Password']
     vPassword = CryptUnprotectData(bytes.fromhex(vPassword1)).decode().replace('\x00', '')
 except Exception as error_occured:
     quit()
