@@ -15,7 +15,6 @@
 import os
 import requests
 import json
-from datetime import datetime, date, timedelta
 from DPAPI  import CryptUnprotectData, CryptProtectData
 #################Create config folder########################
 current_directory = os.getcwd()
@@ -44,8 +43,8 @@ if os.path.isfile(enc_clientid_path):
     with open(enc_clientid_path, "rb") as file:
         encrypted_clientid = file.read()
 else:
-    clientid = input("File does not exist. Please enter the password: ")
-    # Here, you can perform additional logic based on the entered password
+    clientid = input("File does not exist. Please enter the Clientid: ")
+    # Here, you can perform additional logic based on the entered Clientid
     print(f"Entered Clientid: {clientid}")
     print(f"Encrypting the enterted Clientid and saving it to {enc_clientid_path}")
     encrypted_clientid = CryptProtectData(clientid.encode())
@@ -71,7 +70,7 @@ if os.path.isfile(enc_secret_path):
         encrypted_Secret = file.read()
 else:
     Secret = input("File does not exist. Please enter the Client Secret: ")
-    # Here, you can perform additional logic based on the entered password
+    # Here, you can perform additional logic based on the entered Client Secret
     print(f"Entered Secret: {Secret}")
     print(f"Encrypting the enterted Secret and saving it to {enc_secret_path}")
     encrypted_Secret = CryptProtectData(Secret.encode())
